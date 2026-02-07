@@ -2,95 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Brain Games Neon Design System */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark cyberpunk base */
+    --background: 230 25% 5%;
+    --foreground: 200 100% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card surfaces */
+    --card: 230 30% 8%;
+    --card-foreground: 200 100% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 230 30% 10%;
+    --popover-foreground: 200 100% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Neon primary - Electric Cyan */
+    --primary: 185 100% 50%;
+    --primary-foreground: 230 25% 5%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Neon secondary - Hot Magenta */
+    --secondary: 315 100% 60%;
+    --secondary-foreground: 230 25% 5%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted surfaces */
+    --muted: 230 20% 15%;
+    --muted-foreground: 200 30% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Neon accent - Lime Green */
+    --accent: 120 100% 50%;
+    --accent-foreground: 230 25% 5%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Warning - Neon Orange */
+    --destructive: 25 100% 55%;
+    --destructive-foreground: 230 25% 5%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs */
+    --border: 230 30% 20%;
+    --input: 230 30% 15%;
+    --ring: 185 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom neon colors */
+    --neon-cyan: 185 100% 50%;
+    --neon-magenta: 315 100% 60%;
+    --neon-lime: 120 100% 50%;
+    --neon-orange: 25 100% 55%;
+    --neon-purple: 270 100% 65%;
+    --neon-blue: 210 100% 60%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Glow intensities */
+    --glow-sm: 0 0 10px;
+    --glow-md: 0 0 20px;
+    --glow-lg: 0 0 40px;
+    --glow-xl: 0 0 60px;
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 230 30% 8%;
+    --sidebar-foreground: 200 100% 95%;
+    --sidebar-primary: 185 100% 50%;
+    --sidebar-primary-foreground: 230 25% 5%;
+    --sidebar-accent: 315 100% 60%;
+    --sidebar-accent-foreground: 230 25% 5%;
+    --sidebar-border: 230 30% 20%;
+    --sidebar-ring: 185 100% 50%;
   }
 }
 
@@ -99,7 +76,375 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer components {
+  /* Neon glow effects */
+  .neon-text-cyan {
+    text-shadow: 
+      0 0 5px hsl(var(--neon-cyan)),
+      0 0 10px hsl(var(--neon-cyan)),
+      0 0 20px hsl(var(--neon-cyan)),
+      0 0 40px hsl(var(--neon-cyan) / 0.5);
+  }
+
+  .neon-text-magenta {
+    text-shadow: 
+      0 0 5px hsl(var(--neon-magenta)),
+      0 0 10px hsl(var(--neon-magenta)),
+      0 0 20px hsl(var(--neon-magenta)),
+      0 0 40px hsl(var(--neon-magenta) / 0.5);
+  }
+
+  .neon-text-lime {
+    text-shadow: 
+      0 0 5px hsl(var(--neon-lime)),
+      0 0 10px hsl(var(--neon-lime)),
+      0 0 20px hsl(var(--neon-lime)),
+      0 0 40px hsl(var(--neon-lime) / 0.5);
+  }
+
+  /* Neon border glow */
+  .neon-border-cyan {
+    box-shadow: 
+      0 0 5px hsl(var(--neon-cyan)),
+      0 0 10px hsl(var(--neon-cyan) / 0.5),
+      inset 0 0 5px hsl(var(--neon-cyan) / 0.3);
+    border-color: hsl(var(--neon-cyan));
+  }
+
+  .neon-border-magenta {
+    box-shadow: 
+      0 0 5px hsl(var(--neon-magenta)),
+      0 0 10px hsl(var(--neon-magenta) / 0.5),
+      inset 0 0 5px hsl(var(--neon-magenta) / 0.3);
+    border-color: hsl(var(--neon-magenta));
+  }
+
+  .neon-border-lime {
+    box-shadow: 
+      0 0 5px hsl(var(--neon-lime)),
+      0 0 10px hsl(var(--neon-lime) / 0.5),
+      inset 0 0 5px hsl(var(--neon-lime) / 0.3);
+    border-color: hsl(var(--neon-lime));
+  }
+
+  /* Game card styles */
+  .game-card {
+    @apply relative overflow-hidden rounded-xl border-2 bg-card p-6 transition-all duration-300;
+    border-color: hsl(var(--border));
+  }
+
+  .game-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+      0 0 20px hsl(var(--neon-cyan) / 0.3),
+      0 0 40px hsl(var(--neon-cyan) / 0.2);
+    border-color: hsl(var(--neon-cyan));
+  }
+
+  .game-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, 
+      hsl(var(--neon-cyan) / 0.1) 0%, 
+      transparent 50%, 
+      hsl(var(--neon-magenta) / 0.1) 100%);
+  }
+
+  .game-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Neon button styles */
+  .neon-button {
+    @apply relative px-8 py-3 font-semibold uppercase tracking-wider rounded-lg border-2 transition-all duration-300;
+    font-family: 'Orbitron', sans-serif;
+    background: transparent;
+    border-color: hsl(var(--neon-cyan));
+    color: hsl(var(--neon-cyan));
+  }
+
+  .neon-button:hover {
+    background: hsl(var(--neon-cyan));
+    color: hsl(var(--background));
+    box-shadow: 
+      0 0 20px hsl(var(--neon-cyan)),
+      0 0 40px hsl(var(--neon-cyan) / 0.5),
+      0 0 60px hsl(var(--neon-cyan) / 0.3);
+  }
+
+  .neon-button-magenta {
+    border-color: hsl(var(--neon-magenta));
+    color: hsl(var(--neon-magenta));
+  }
+
+  .neon-button-magenta:hover {
+    background: hsl(var(--neon-magenta));
+    box-shadow: 
+      0 0 20px hsl(var(--neon-magenta)),
+      0 0 40px hsl(var(--neon-magenta) / 0.5),
+      0 0 60px hsl(var(--neon-magenta) / 0.3);
+  }
+
+  .neon-button-lime {
+    border-color: hsl(var(--neon-lime));
+    color: hsl(var(--neon-lime));
+  }
+
+  .neon-button-lime:hover {
+    background: hsl(var(--neon-lime));
+    box-shadow: 
+      0 0 20px hsl(var(--neon-lime)),
+      0 0 40px hsl(var(--neon-lime) / 0.5),
+      0 0 60px hsl(var(--neon-lime) / 0.3);
+  }
+
+  /* Animated background grid */
+  .cyber-grid {
+    background-image: 
+      linear-gradient(hsl(var(--neon-cyan) / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--neon-cyan) / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+  }
+
+  /* Score display */
+  .score-display {
+    @apply px-4 py-2 rounded-lg border font-bold;
+    font-family: 'Orbitron', sans-serif;
+    background: hsl(var(--card));
+    border-color: hsl(var(--neon-cyan));
+    color: hsl(var(--neon-cyan));
+    text-shadow: 0 0 10px hsl(var(--neon-cyan));
+  }
+
+  /* Timer display */
+  .timer-display {
+    @apply px-4 py-2 rounded-lg border font-bold text-2xl;
+    font-family: 'Orbitron', sans-serif;
+    background: hsl(var(--card));
+    border-color: hsl(var(--neon-orange));
+    color: hsl(var(--neon-orange));
+    text-shadow: 0 0 10px hsl(var(--neon-orange));
+  }
+
+  /* Memory card flip */
+  .memory-card {
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .memory-card-inner {
+    @apply relative w-full h-full transition-transform duration-500;
+    transform-style: preserve-3d;
+  }
+
+  .memory-card.flipped .memory-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .memory-card-front,
+  .memory-card-back {
+    @apply absolute inset-0 flex items-center justify-center rounded-xl border-2;
+    backface-visibility: hidden;
+  }
+
+  .memory-card-back {
+    transform: rotateY(180deg);
+  }
+
+  /* Maze path styles */
+  .maze-cell {
+    @apply transition-all duration-300;
+  }
+
+  .maze-cell.path {
+    background: hsl(var(--muted));
+  }
+
+  .maze-cell.wall {
+    background: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .maze-cell.unlocked {
+    background: hsl(var(--neon-lime) / 0.3);
+    box-shadow: 0 0 10px hsl(var(--neon-lime) / 0.5);
+  }
+
+  .maze-cell.player {
+    background: hsl(var(--neon-cyan));
+    box-shadow: 0 0 15px hsl(var(--neon-cyan));
+    border-radius: 50%;
+  }
+
+  .maze-cell.goal {
+    background: hsl(var(--neon-magenta));
+    box-shadow: 0 0 15px hsl(var(--neon-magenta));
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .maze-cell.locked {
+    background: hsl(var(--neon-orange) / 0.3);
+    border: 2px dashed hsl(var(--neon-orange));
+  }
+
+  /* Reaction zone */
+  .reaction-zone {
+    @apply w-64 h-64 rounded-full flex items-center justify-center text-2xl font-bold transition-colors duration-100;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .reaction-zone.waiting {
+    background: hsl(var(--muted));
+    border: 4px solid hsl(var(--border));
+  }
+
+  .reaction-zone.ready {
+    background: hsl(var(--neon-lime));
+    box-shadow: 0 0 40px hsl(var(--neon-lime));
+    color: hsl(var(--background));
+  }
+
+  .reaction-zone.early {
+    background: hsl(var(--destructive));
+    box-shadow: 0 0 40px hsl(var(--destructive));
+  }
+
+  /* Word puzzle styles */
+  .word-distorted {
+    @apply text-4xl font-bold py-8 px-12 rounded-xl;
+    font-family: 'Orbitron', sans-serif;
+    background: hsl(var(--card));
+    border: 2px solid hsl(var(--neon-purple));
+    color: hsl(var(--neon-purple));
+    text-shadow: 0 0 10px hsl(var(--neon-purple));
+  }
+
+  /* Profile avatar */
+  .profile-avatar {
+    @apply w-16 h-16 rounded-full border-2 flex items-center justify-center text-2xl font-bold;
+    background: linear-gradient(135deg, hsl(var(--neon-cyan)), hsl(var(--neon-magenta)));
+    border-color: hsl(var(--neon-cyan));
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Pulse glow animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 15px currentColor;
+    }
+    50% {
+      box-shadow: 0 0 30px currentColor, 0 0 50px currentColor;
+    }
+  }
+
+  @keyframes gridMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes title-glow {
+    0%, 100% {
+      text-shadow: 
+        0 0 10px hsl(var(--neon-cyan)),
+        0 0 20px hsl(var(--neon-cyan)),
+        0 0 40px hsl(var(--neon-cyan)),
+        0 0 80px hsl(var(--neon-cyan) / 0.5);
+    }
+    50% {
+      text-shadow: 
+        0 0 20px hsl(var(--neon-cyan)),
+        0 0 40px hsl(var(--neon-cyan)),
+        0 0 80px hsl(var(--neon-cyan)),
+        0 0 120px hsl(var(--neon-cyan) / 0.8);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s ease-out forwards;
+  }
+
+  .animate-title-glow {
+    animation: title-glow 3s ease-in-out infinite;
+  }
+
+  /* Stagger animations */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
 }
