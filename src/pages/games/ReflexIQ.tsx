@@ -29,23 +29,12 @@ const ReflexIQ = () => {
     const maxDelay = Math.max(2500, 4000 - level * 300);
     const delay = Math.random() * (maxDelay - minDelay) + minDelay;
     
-    // Sometimes add a fake trigger (more at higher levels)
-    const fakeChance = 0.1 + level * 0.05;
-    if (Math.random() < fakeChance) {
-      // Show a brief flash before the real signal
-      setTimeout(() => {
-        if (gameState === 'countdown') {
-          // Quick visual hint that's NOT the signal
-        }
-      }, delay * 0.5);
-    }
-    
     timeoutRef.current = setTimeout(() => {
       setGameState('ready');
       startTimeRef.current = performance.now();
       playSound('click');
     }, delay);
-  }, [level, gameState]);
+  }, [level]);
 
   const handleClick = () => {
     if (gameState === 'waiting') {
