@@ -297,7 +297,7 @@ const BrainMaze = () => {
           </div>
           
           {/* Mobile Controls */}
-          <div className="grid grid-cols-3 gap-2 mt-6 max-w-[180px] mx-auto md:hidden">
+          <div className="grid grid-cols-3 gap-2 mt-6 max-w-[180px] mx-auto">
             <div />
             <button 
               onClick={() => movePlayer(0, -1)} 
