@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Zap, Target, Clock, Sparkles, ArrowRight, Play } from 'lucide-react';
+import { Brain, Zap, Target, Clock, Sparkles, ArrowRight, Play, LogIn } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import { getProfile, createProfile } from '@/lib/gameStore';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Landing = () => {
   const [showSetup, setShowSetup] = useState(false);
