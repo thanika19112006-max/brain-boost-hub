@@ -9,6 +9,7 @@ const Landing = () => {
   const [showSetup, setShowSetup] = useState(false);
   const [playerName, setPlayerName] = useState('');
   const profile = getProfile();
+  const { user } = useAuth();
 
   const handleStartJourney = () => {
     if (!profile) {
