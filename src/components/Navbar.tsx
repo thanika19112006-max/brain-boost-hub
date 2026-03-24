@@ -1,18 +1,26 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Brain, Volume2, VolumeX, User, Menu, X, Home, Gamepad2 } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Brain, Volume2, VolumeX, User, Menu, X, Home, Gamepad2, LogIn, LogOut } from 'lucide-react';
 import { getSoundEnabled, setSoundEnabled, getProfile } from '@/lib/gameStore';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Navbar = () => {
   const [soundEnabled, setSoundState] = useState(getSoundEnabled());
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const profile = getProfile();
+  const { user, signOut } = useAuth();
 
   const toggleSound = () => {
     const newState = !soundEnabled;
     setSoundState(newState);
     setSoundEnabled(newState);
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
   };
 
   const navItems = [
@@ -73,16 +81,33 @@ const Navbar = () => {
               )}
             </button>
 
-            {/* Profile Badge */}
-            {profile && (
+            {/* Auth buttons */}
+            {user ? (
+              <div className="hidden md:flex items-center gap-3">
+                <Link
+                  to="/profile"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-card border border-border hover:border-primary transition-all duration-300"
+                >
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-xs font-bold text-background">
+                    {(user.user_metadata?.display_name || user.email || 'U').charAt(0).toUpperCase()}
+                  </div>
+                  <span className="font-rajdhani text-sm">{user.user_metadata?.display_name || 'Player'}</span>
+                </Link>
+                <button
+                  onClick={handleSignOut}
+                  className="p-2 rounded-lg border border-border hover:border-destructive hover:text-destructive transition-all duration-300"
+                  title="Sign out"
+                >
+                  <LogOut className="w-5 h-5" />
+                </button>
+              </div>
+            ) : (
               <Link
-                to="/profile"
-                className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-card border border-border hover:border-primary transition-all duration-300"
+                to="/login"
+                className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-background font-rajdhani font-medium transition-all duration-300"
               >
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-xs font-bold text-background">
-                  {profile.name.charAt(0).toUpperCase()}
-                </div>
-                <span className="font-rajdhani text-sm">{profile.name}</span>
+                <LogIn className="w-4 h-4" />
+                Sign In
               </Link>
             )}
 
@@ -119,6 +144,25 @@ const Navbar = () => {
                   </Link>
                 );
               })}
+              {/* Mobile auth */}
+              {user ? (
+                <button
+                  onClick={() => { handleSignOut(); setMobileMenuOpen(false); }}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg font-rajdhani font-medium text-destructive hover:bg-destructive/10 transition-all duration-300"
+                >
+                  <LogOut className="w-5 h-5" />
+                  Sign Out
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg font-rajdhani font-medium text-primary hover:bg-primary/10 transition-all duration-300"
+                >
+                  <LogIn className="w-5 h-5" />
+                  Sign In
+                </Link>
+              )}
             </div>
           </div>
         )}

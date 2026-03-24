@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Zap, Target, Clock, Sparkles, ArrowRight, Play } from 'lucide-react';
+import { Brain, Zap, Target, Clock, Sparkles, ArrowRight, Play, LogIn } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import { getProfile, createProfile } from '@/lib/gameStore';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Landing = () => {
   const [showSetup, setShowSetup] = useState(false);
   const [playerName, setPlayerName] = useState('');
   const profile = getProfile();
+  const { user } = useAuth();
 
   const handleStartJourney = () => {
     if (!profile) {
@@ -70,22 +72,29 @@ const Landing = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up opacity-0" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
-              {profile ? (
+              {user ? (
                 <Link to="/dashboard" className="neon-button group flex items-center gap-3">
                   <Play className="w-5 h-5" />
                   Continue Training
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               ) : (
-                <button onClick={handleStartJourney} className="neon-button group flex items-center gap-3">
+                <Link to="/signup" className="neon-button group flex items-center gap-3">
                   <Zap className="w-5 h-5" />
                   Start Your Journey
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
               )}
-              <Link to="/dashboard" className="neon-button neon-button-magenta flex items-center gap-2">
-                Explore Games
-              </Link>
+              {user ? (
+                <Link to="/dashboard" className="neon-button neon-button-magenta flex items-center gap-2">
+                  Explore Games
+                </Link>
+              ) : (
+                <Link to="/login" className="neon-button neon-button-magenta flex items-center gap-2">
+                  <LogIn className="w-5 h-5" />
+                  Sign In
+                </Link>
+              )}
             </div>
 
             {/* Features Grid */}
